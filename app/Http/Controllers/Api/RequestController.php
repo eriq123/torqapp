@@ -26,10 +26,10 @@ class RequestController extends Controller
 	}
 	//View ALL PPMP
 	public function ppmpviews(Request $request){
-			$ppmp = PPMP::all();
+		$ppmp = PPMP::all();
 
-			return Response::json($ppmp);
-		}
+		return Response::json($ppmp);
+	}
 	// View APP
 	public function appview(Request $request){
 		$app = APP::with('items')->where('course_id',$request->getId)->get();
@@ -44,40 +44,40 @@ class RequestController extends Controller
 	}
 
     //View Courses
-    public function dept(Request $request) {
-    	$Departments = Department::with('courses')->get();
+	public function dept(Request $request) {
+		$Departments = Department::with('courses')->get();
 				// $msg['success'] = "1";
 	   //         	 $msg['message'] = "success";
 	   //         	 // $msg['login'] = [$user];
 	   //         	 $msg['deptArray'] = [$Departments];
-    return Response::json($Departments);
+		return Response::json($Departments);
 	}
 
 	 //View Courses
-    public function budget(Request $request) {
-    	$budget = Course::all()->where('id',$request->getId)->first();
-				$msg['success'] = "1";
-	           	 $msg['message'] = "success";
-	           	 $msg['budget'] = [$budget];
+	public function budget(Request $request) {
+		$budget = Course::all()->where('id',$request->getId)->first();
+		$msg['success'] = "1";
+		$msg['message'] = "success";
+		$msg['budget'] = [$budget];
 	   //         	 $msg['deptArray'] = [$Departments];
-    return Response::json($msg);
+		return Response::json($msg);
 	}
 
-    public function budgets(Request $request) {
-	$budget = Course::all();
-			$msg['success'] = "1";
-           	$msg['message'] = "success";
-           	$msg['budget'] = [$msg];
+	public function budgets(Request $request) {
+		$budget = Course::all();
+		$msg['success'] = "1";
+		$msg['message'] = "success";
+		$msg['budget'] = [$msg];
    //         	 $msg['deptArray'] = [$Departments];
-    return response()->json(compact('budget'));
+		return response()->json(compact('budget'));
 	}
 
 }
-	public function reqtrack(Request $request){
-		$req = Request::where('user_id',$request->getId)->first();
+public function reqtrack(Request $request){
+	$req = Request::where('user_id',$request->getId)->first();
 
-		return response()->json($req);
-	}
+	return response()->json($req);
+}
 
 	// public function ppmpview(Request $request){
 	// 		$ppmp = PPMP::all();
